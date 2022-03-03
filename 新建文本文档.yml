@@ -1,0 +1,29 @@
+name: auto-mod-fxn-all
+env:    
+  TZ: America/Sanfransisco  
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 6,18  *  *  *"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Download and mod fenix
+      run: |
+      mkdir ~/retroarch
+      cd ~/retroarch
+      git clone https://github.com/libretro/libretro-fceumm.git
+      cd libretro-fceumm
+      emmake make -f Makefile.libretro platform=emscripten
+      git clone https://github.com/libretro/RetroArch.git ~/retroarch/RetroArch
+      cp ~/retroarch/libretro-fceumm/fceumm_libretro_emscripten.bc ~/retroarch/RetroArch/dist-scripts/fceumm_libretro_emscripten.bc
+      cd ~/retroarch/RetroArch/dist-scripts
+      emmake ./dist-cores.sh emscripten
