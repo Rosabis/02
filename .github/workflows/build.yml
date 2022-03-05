@@ -16,4 +16,4 @@ jobs:
       - name: Verify
         run: git clone mkdir ~/retroarch
              cd ~/retroarch
-             git clone https://github.com/libretro/libretro-fceumm.git
+             git clone --progress https://github.com/libretro/libretro-fceumm.git ./retroarch
