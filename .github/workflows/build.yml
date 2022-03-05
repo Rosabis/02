@@ -17,4 +17,3 @@ jobs:
         run: git clone mkdir ~/retroarch
              cd ~/retroarch
              git clone https://github.com/libretro/libretro-fceumm.git
-             cd libretro-fceumm
