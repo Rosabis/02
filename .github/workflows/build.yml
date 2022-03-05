@@ -1,0 +1,21 @@
+name: auto-build-core
+env:    
+  TZ: America/Sanfransisco  
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 6,18  *  *  *"
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mymindstorm/setup-emsdk@v11
+
+      - name: Verify
+        run: git clone mkdir ~/retroarch
+             cd ~/retroarch
+             git clone https://github.com/libretro/libretro-fceumm.git
+             cd libretro-fceumm
+             emmake make -f Makefile.libretro platform=emscripten
