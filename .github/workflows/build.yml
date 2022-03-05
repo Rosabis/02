@@ -14,6 +14,6 @@ jobs:
       - uses: mymindstorm/setup-emsdk@v11
 
       - name: Verify
-        run: git clone mkdir ~/retroarch
+        run: mkdir ~/retroarch
              cd ~/retroarch
-             git clone --progress https://github.com/libretro/libretro-fceumm.git ./retroarch
+             git clone https://github.com/libretro/libretro-fceumm.git
